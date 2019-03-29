@@ -1,10 +1,9 @@
-// import pizzaDiagram from '../resources/pizza-collaboration.bpmn';
-
-// import customElements from './custom-elements.json';
+import pizzaDiagram from '../resources/pizza-collaboration.bpmn';
+import customElements from './custom-elements.json';
 
 import CustomModeler from './custom-modeler';
 
-/* function main() {
+function main() {
   var modeler = new CustomModeler({
     container: '#canvas',
     keyboard: {
@@ -23,7 +22,7 @@ import CustomModeler from './custom-modeler';
     modeler.addCustomElements(customElements);
   });
 }
-main() */
+main()
 
 window.BpmnJS = CustomModeler
 

@@ -9,6 +9,10 @@ import inherits from 'inherits';
 
 import CustomModule from './custom';
 
+import customTranslate from './customTranslate/customTranslate';
+var customTranslateModule = {
+  translate: ['value', customTranslate]
+};
 
 export default function CustomModeler(options) {
   Modeler.call(this, options);
@@ -21,7 +25,8 @@ inherits(CustomModeler, Modeler);
 CustomModeler.prototype._modules = [].concat(
   CustomModeler.prototype._modules,
   [
-    CustomModule
+    CustomModule,
+    customTranslateModule,
   ]
 );
 
@@ -35,7 +40,7 @@ CustomModeler.prototype._addCustomShape = function(customElement) {
   this._customElements.push(customElement);
 
   var canvas = this.get('canvas'),
-      elementFactory = this.get('elementFactory');
+    elementFactory = this.get('elementFactory');
 
   var customAttrs = assign({ businessObject: customElement }, customElement);
 
@@ -50,16 +55,16 @@ CustomModeler.prototype._addCustomConnection = function(customElement) {
   this._customElements.push(customElement);
 
   var canvas = this.get('canvas'),
-      elementFactory = this.get('elementFactory'),
-      elementRegistry = this.get('elementRegistry');
+    elementFactory = this.get('elementFactory'),
+    elementRegistry = this.get('elementRegistry');
 
   var customAttrs = assign({ businessObject: customElement }, customElement);
 
   var connection = elementFactory.create('connection', assign(customAttrs, {
-    source: elementRegistry.get(customElement.source),
-    target: elementRegistry.get(customElement.target)
-  }),
-  elementRegistry.get(customElement.source).parent);
+      source: elementRegistry.get(customElement.source),
+      target: elementRegistry.get(customElement.target)
+    }),
+    elementRegistry.get(customElement.source).parent);
 
   return canvas.addConnection(connection);
 
@@ -77,7 +82,7 @@ CustomModeler.prototype.addCustomElements = function(customElements) {
   }
 
   var shapes = [],
-      connections = [];
+    connections = [];
 
   customElements.forEach(function(customElement) {
     if (isCustomConnection(customElement)) {
@@ -102,7 +107,6 @@ CustomModeler.prototype.addCustomElements = function(customElements) {
 CustomModeler.prototype.getCustomElements = function() {
   return this._customElements;
 };
-
 
 function isCustomConnection(element) {
   return element.type === 'custom:connection';
