@@ -5,6 +5,7 @@ import CustomPalette from './CustomPalette';
 import CustomRenderer from './CustomRenderer';
 import CustomRules from './CustomRules';
 import CustomUpdater from './CustomUpdater';
+import CustomReplaceMenuProvider from './CustomReplaceMenuProvider.js';
 
 export default {
   __init__: [
@@ -13,7 +14,8 @@ export default {
     'customRenderer',
     'customRules',
     'customUpdater',
-    'paletteProvider'
+    'paletteProvider',
+    'replaceMenuProvider',
   ],
   contextPadProvider: ['type', CustomContextPadProvider],
   customOrderingProvider: ['type', CustomOrderingProvider],
@@ -21,5 +23,6 @@ export default {
   customRules: ['type', CustomRules],
   customUpdater: ['type', CustomUpdater],
   elementFactory: ['type', CustomElementFactory],
-  paletteProvider: ['type', CustomPalette]
+  paletteProvider: ['type', CustomPalette],
+  replaceMenuProvider: ['type', CustomReplaceMenuProvider],
 };
