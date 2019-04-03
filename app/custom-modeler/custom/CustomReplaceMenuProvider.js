@@ -80,7 +80,8 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
     entries = filter(replaceOptions.START_EVENT, differentType);
 
     // jh
-    let m = {
+    entries = []
+    /* let m = {
       "replace-with-none-intermediate-throwing": true,
       "replace-with-none-start": true,
       "replace-with-none-end": true,
@@ -95,7 +96,7 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
         list.push(item)
       }
     }
-    entries = list
+    entries = list */
     // jh
 
     return this._createEntries(element, entries);
@@ -145,7 +146,8 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
     });
 
     // jh
-    let m = {
+    entries = []
+    /* let m = {
       "replace-with-none-intermediate-throwing": true,
       "replace-with-none-start": true,
       "replace-with-none-end": true,
@@ -160,8 +162,7 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
         list.push(item)
       }
     }
-    // console.log(entries)
-    // entries = list
+    entries = list */
     // jh
 
     return this._createEntries(element, entries);
@@ -202,7 +203,8 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
 
     entries = filter(replaceOptions.GATEWAY, differentType);
     // jh
-    let m = {
+    entries = []
+    /* let m = {
       "replace-with-exclusive-gateway": true,
       "replace-with-inclusive-gateway": true,
       "replace-with-parallel-gateway": true,
@@ -215,7 +217,7 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
         list.push(item)
       }
     }
-    entries = list
+    entries = list */
     // jh
 
     return this._createEntries(element, entries);
@@ -279,7 +281,8 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
     }
 
     // jh
-    let m = {
+    entries = []
+    /* let m = {
       "replace-with-task": true,
       "replace-with-send-task": true,
       "replace-with-receive-task": true,
@@ -298,7 +301,7 @@ ReplaceMenuProvider.prototype.getEntries = function(element) {
         list.push(item)
       }
     }
-    entries = list
+    entries = list */
     // jh
 
     return this._createEntries(element, entries);
@@ -328,6 +331,10 @@ ReplaceMenuProvider.prototype.getHeaderEntries = function(element) {
     !isEventSubProcess(element)) {
     headerEntries.push(this._getAdHocEntry(element));
   }
+
+  // jh
+  headerEntries = []
+  // jh
 
   return headerEntries;
 };
@@ -419,6 +426,10 @@ ReplaceMenuProvider.prototype._createSequenceFlowEntries = function(element, rep
         }
     }
   });
+
+  // jh
+  menuEntries = []
+  // jh
 
   return menuEntries;
 };

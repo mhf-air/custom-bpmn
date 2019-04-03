@@ -37,7 +37,7 @@ window.RenderBpmn = function(option) {
     }
   })
 
-  let $ = option.$
+  let $ = window.jQuery
   if (!$) {
     console.error("jquery not included")
     return
@@ -63,26 +63,9 @@ window.RenderBpmn = function(option) {
         }
       })
 
-      $("#" + option.id + " a.bjs-powered-by").hide()
-
-      let saveBtn = $([
-        '<div class="group">',
-          '<button class="layui-btn" style="width: 100%;">',
-            '保存',
-          '</button>',
-        '</div>'
-      ].join(""))
-      $("#" + option.id + " .djs-palette-entries").append(saveBtn)
-      saveBtn.click(function() {
-        modeler.saveXML({ format: true }, function(err, xml) {
-          if (err) {
-            return console.error('could not save BPMN 2.0 diagram', err);
-          }
-          if (option.onSave) {
-            option.onSave(xml)
-          }
-        })
-      })
+      if (option.hack) {
+        option.hack()
+      }
     })
   }
 
