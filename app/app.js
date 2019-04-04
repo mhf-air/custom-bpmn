@@ -2,6 +2,7 @@
 // import customElements from './custom-elements.json';
 
 import CustomModeler from './custom-modeler';
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
 /* function main() {
   var modeler = new CustomModeler({
@@ -30,44 +31,8 @@ main() */
 // window.bpmnjs = modeler;
 
 window.RenderBpmn = function(option) {
-  let modeler = new CustomModeler({
-    container: "#" + option.id,
-    keyboard: {
-      bindTo: window,
-    }
-  })
-
-  let $ = window.jQuery
-  if (!$) {
-    console.error("jquery not included")
-    return
+  return {
+    viewer: BpmnViewer,
+    modeler: CustomModeler,
   }
-
-  $.get(option.url, openDiagram, 'text');
-
-  function openDiagram(bpmnXML) {
-    modeler.importXML(bpmnXML, function(err) {
-      if (err) {
-        return console.error('could not import BPMN 2.0 diagram', err)
-      }
-
-      // access modeler components
-      let canvas = modeler.get('canvas')
-
-      // zoom to fit full viewport
-      canvas.zoom('fit-viewport');
-
-      modeler.on("element.click", function(e) {
-        if (option.onElementClick) {
-          option.onElementClick(e)
-        }
-      })
-
-      if (option.hack) {
-        option.hack()
-      }
-    })
-  }
-
-  return modeler
 }
