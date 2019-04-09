@@ -333,7 +333,18 @@ ReplaceMenuProvider.prototype.getHeaderEntries = function(element) {
   }
 
   // jh
-  headerEntries = []
+  // headerEntries = []
+  let m = {
+    "toggle-parallel-mi": true,
+    "toggle-sequential-mi": true,
+  }
+  let list = []
+  for (let item of headerEntries) {
+    if (m[item.id]) {
+      list.push(item)
+    }
+  }
+  headerEntries = list
   // jh
 
   return headerEntries;
