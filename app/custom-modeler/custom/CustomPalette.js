@@ -115,9 +115,12 @@ PaletteProvider.prototype.getPaletteEntries = function(element) {
       'bpmn:ParallelGateway', 'gateway', 'bpmn-icon-gateway-parallel'
     ),
 
-    'create.task': createAction(
-      'bpmn:Task', 'activity', 'bpmn-icon-task'
+    'create.user-task': createAction(
+      'bpmn:UserTask', 'activity', 'bpmn-icon-user-task'
     ),
+    /* 'create.task': createAction(
+      'bpmn:Task', 'activity', 'bpmn-icon-task'
+    ), */
     /* 'create.subprocess-expanded': createAction(
       'bpmn:SubProcess', 'activity', 'bpmn-icon-subprocess-expanded', 'Create expanded SubProcess', { isExpanded: true }
     ),
